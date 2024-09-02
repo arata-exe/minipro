@@ -12,7 +12,7 @@ export const dynamic = "force-dynamic";
 export async function GET() {
   try {
     // Query to fetch data from the "TSN008" table
-    const res = await client.query('SELECT * FROM "TSN008" ORDER BY id DESC LIMIT 1');
+    const res = await client.query('SELECT * FROM aom28 ORDER BY id DESC LIMIT 1');
     
     // Check if there is any data
     if (res.rows.length === 0) {

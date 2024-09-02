@@ -13,7 +13,7 @@ export async function GET() {
   try {
     // Query to get the tbl_led value for id = 1
     const res = await client.query(
-      'SELECT tbl_led FROM "TSN008" WHERE id = 1356'
+      'SELECT tbl_led FROM aom28 WHERE id = 1'
     );
 
     if (res.rowCount === 0) {
@@ -51,7 +51,7 @@ export async function POST(req: Request) {
   try {
     const { smoke, ldr, vibration } = await req.json();
     const res = await client.query(
-      'INSERT INTO "TSN008" (tbl_smoke, tbl_ldr, tbl_vibration) VALUES ($1, $2, $3) RETURNING *',
+      'INSERT INTO aom28 (tbl_smoke, tbl_ldr, tbl_vibration) VALUES ($1, $2, $3) RETURNING *',
       [smoke, ldr, vibration]
     );
     return new Response(JSON.stringify(res.rows[0]), {
@@ -79,7 +79,7 @@ export async function PUT(req: Request) {
     
     // Update the tbl_led field for id = 1
     const res = await client.query(
-      'UPDATE "TSN008" SET tbl_led = $1 WHERE id = 1356 RETURNING *',
+      'UPDATE aom28 SET tbl_led = $1 WHERE id = 1 RETURNING *',
       [tbl_led]
     );
 
